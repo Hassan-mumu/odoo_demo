@@ -8,7 +8,7 @@ class TestHobby(TransactionCase):
         hobby = self.env['demo.hobby'].create({
             'name': 'Programming'
         })
-        self.assertEqual(hobby.name, 'Programming')
+        self.assertEqual(hobby.name, 'Programing')
 
     def test_name_is_required(self):
         with self.assertRaises(NotNullViolation):
@@ -24,11 +24,11 @@ class TestUsers(TransactionCase):
 
     def test_description_is_required(self):
         with mute_logger('odoo.sql_db'):
-            with self.assertRaises(Exception):
-                user = self.env['res.users'].create({
+            user = self.env['res.users'].create({
                     'name': 'Marie-Noël',
-                    'login': 'mnv',
+                    'login': 'mnv'
                 })
+            with self.assertRaises(Exception):
                 user.description = None
 
 
